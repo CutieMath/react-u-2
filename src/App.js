@@ -1,20 +1,12 @@
 import { categories } from "./utils/dummy";
 import "./categories.styles.scss";
+import CategoryItem from "./components/category-item/category-item.component";
 
 const App = () => {
   return (
     <div className="categories-container">
       {categories.map(({ id, title, imageUrl }) => (
-        <div key={id} className="category-container">
-          <div
-            className="background-image"
-            style={{ backgroundImage: `url(${imageUrl})` }}
-          />
-          <div className="category-body-container">
-            <h2>{title}</h2>
-            <p>Read more</p>
-          </div>
-        </div>
+        <CategoryItem key={id} title={title} imageUrl={imageUrl} />
       ))}
     </div>
   );
