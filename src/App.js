@@ -1,15 +1,7 @@
-import { categories } from "./utils/dummy";
-import "./categories.styles.scss";
-import CategoryItem from "./components/category-item/category-item.component";
+import Categories from "./components/categories/categories.component";
 
 const App = () => {
-  return (
-    <div className="categories-container">
-      {categories.map((category) => (
-        <CategoryItem category={category} key={category.id} />
-      ))}
-    </div>
-  );
+  return <Categories />;
 };
 
 export default App;
