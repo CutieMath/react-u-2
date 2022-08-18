@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 import {
-  createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
@@ -40,7 +39,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div>
+    <div className="sign-up-container">
       <h2>Already have an account?</h2>
       <span>Sign in here</span>
       <form onSubmit={handleSubmit}>
@@ -60,10 +59,12 @@ const SignInForm = () => {
           name="password"
           value={password}
         />
-        <Button type="submit">Sign In</Button>
-        <Button buttonType="google" type="submit">
-          Sign In with Google
-        </Button>
+        <div className="buttons-container">
+          <Button type="submit">Sign In</Button>
+          <Button buttonType="google" type="submit" onClick={signInWithGoogle}>
+            Google Sign In
+          </Button>
+        </div>
       </form>
     </div>
   );
