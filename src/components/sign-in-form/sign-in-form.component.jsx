@@ -40,7 +40,11 @@ const SignInForm = () => {
       console.log(res);
       resetFormFields();
     } catch (error) {
-      console.log("Error occured when signing in a user: ", error);
+      if (error.code === "auth/wrong-password") {
+        alert("Wrong password");
+      } else {
+        console.log("Error occured when signing in a user: ", error);
+      }
     }
   };
 
