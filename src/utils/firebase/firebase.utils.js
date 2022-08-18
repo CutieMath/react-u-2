@@ -33,7 +33,10 @@ export const signInWithGoogleRedirect = () =>
 
 export const db = getFirestore();
 // store the user into firebase
-export const createUserDocumentFromAuth = async (authUser) => {
+export const createUserDocumentFromAuth = async (
+  authUser,
+  additionalInformation = {}
+) => {
   if (!authUser) return; // method to protect my code
   const userDocRef = doc(db, "users", authUser.uid);
   const userSnapshot = await getDoc(userDocRef);
@@ -45,6 +48,7 @@ export const createUserDocumentFromAuth = async (authUser) => {
         displayName,
         email,
         createdAt,
+        ...additionalInformation,
       });
     } catch (error) {
       console.log(error.message);
