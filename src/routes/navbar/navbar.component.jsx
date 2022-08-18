@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { BiPlanet } from "react-icons/bi";
 import "./navbar.styles.scss";
+import { UserContext } from "../../context/user.context";
 
 const Navbar = () => {
+  const { currentUser } = useContext(UserContext);
+
   return (
     <>
       <div className="navbar">
