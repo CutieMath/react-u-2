@@ -31,10 +31,11 @@ const SignIn = () => {
     <div>
       <SignInForm />
       <SignUpForm />
-      <button onClick={logGoogleUser}>Sign In With Google</button>
+      {/* 
+      Example of how to use google redirect
       <button onClick={signInWithGoogleRedirect}>
         Sign in with Google redirect
-      </button>
+      </button> */}
     </div>
   );
 };
