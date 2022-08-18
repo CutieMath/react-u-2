@@ -4,8 +4,10 @@ import FormInput from "../form-input/form-input.component";
 import {
   createUserDocumentFromAuth,
   signInWithGooglePopup,
+  signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 import "./sign-in-form.styles.scss";
+import { connectFirestoreEmulator } from "firebase/firestore";
 
 const defaultFormFields = {
   email: "",
@@ -31,11 +33,15 @@ const SignInForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const res = await signInAuthUserWithEmailAndPassword(email, password);
+      console.log(res);
       resetFormFields();
-    } catch (error) {}
+    } catch (error) {
+      console.log("Error occured when signing in a user: ", error);
+    }
   };
 
   return (
