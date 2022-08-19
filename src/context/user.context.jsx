@@ -15,8 +15,8 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     // onSubscribe when component unmount
-    const unsubscribe = onAuthStateChangedListener((res) => {
-      console.log("onAuthStateChange result: ", res);
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      setCurrentUser(user); // if the user sign out, the call back will return null
     });
     return unsubscribe;
   }, []);
