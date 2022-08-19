@@ -4,6 +4,7 @@ import { BiPlanet } from "react-icons/bi";
 import "./navbar.styles.scss";
 import { UserContext } from "../../context/user.context";
 import { signOutAuthUser } from "../../utils/firebase/firebase.utils";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
 
 const Navbar = () => {
   const { currentUser } = useContext(UserContext);
@@ -29,6 +30,7 @@ const Navbar = () => {
               <h3 className="nav-link-text">Sign In</h3>
             </Link>
           )}
+          <CartIcon />
         </div>
       </div>
       <Outlet />
