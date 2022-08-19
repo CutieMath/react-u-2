@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { BiPlanet } from "react-icons/bi";
 import "./navbar.styles.scss";
@@ -6,10 +6,11 @@ import { UserContext } from "../../context/user.context";
 import { signOutAuthUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.components";
+import { CartContext } from "../../context/cart.context";
 
 const Navbar = () => {
   const { currentUser } = useContext(UserContext);
-  const [showCartDropdown, setShowCartDropdown] = useState(false);
+  const { showCartDropdown, setShowCartDropdown } = useContext(CartContext);
   return (
     <>
       <div className="navbar">
