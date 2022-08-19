@@ -29,10 +29,9 @@ const SignUpForm = () => {
         email,
         password
       );
-      // Pass the returned user into docCreation
-      const res = await createUserDocumentFromAuth(user, { displayName });
+
+      await createUserDocumentFromAuth(user, { displayName });
       setFormField(defaultFormFields); // reset form
-      console.log(res);
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         alert("Email already in use");

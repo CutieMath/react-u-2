@@ -26,12 +26,8 @@ const SignInForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  // Store customer into firebase
-  // Set customer state
-  // Log any errors
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (e) => {
