@@ -1,14 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { BiPlanet } from "react-icons/bi";
 import "./navbar.styles.scss";
 import { UserContext } from "../../context/user.context";
 import { signOutAuthUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.components";
 
 const Navbar = () => {
   const { currentUser } = useContext(UserContext);
-
+  const [showCartDropdown, setShowCartDropdown] = useState(false);
   return (
     <>
       <div className="navbar">
@@ -30,8 +31,12 @@ const Navbar = () => {
               <h3 className="nav-link-text">Sign In</h3>
             </Link>
           )}
-          <CartIcon />
+          <CartIcon
+            setShowCartDropdown={setShowCartDropdown}
+            showCartDropdown={showCartDropdown}
+          />
         </div>
+        {showCartDropdown && <CartDropdown />}
       </div>
       <Outlet />
     </>
