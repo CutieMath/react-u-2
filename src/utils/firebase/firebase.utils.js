@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -73,3 +74,8 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 export const signOutAuthUser = async () => {
   await signOut(auth);
 };
+
+// This function will always be listening to see if the user is authenticated.
+// So when the App is unmounted, we need to stop this function, otherwise it's going to cause memory leak.
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);
