@@ -1,10 +1,11 @@
-import React from "react";
-import { shopData } from "../../utils/dummy";
+import React, { useContext } from "react";
+import { ProductsContext } from "../../context/products.context";
 
 const Shop = () => {
+  const { productsData } = useContext(ProductsContext);
   return (
     <div>
-      {shopData.map((product) => (
+      {productsData.map((product) => (
         <div key={product.id}>
           <h1>{product.name}</h1>
         </div>
