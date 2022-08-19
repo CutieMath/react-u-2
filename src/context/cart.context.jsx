@@ -4,7 +4,7 @@ export const CartContext = createContext({
   showCartDropdown: false,
   setShowCartDropdown: () => {},
   cartItems: [],
-  addItem: () => {},
+  addItemToCart: () => {},
 });
 
 /*
@@ -53,6 +53,12 @@ export const CartProvider = ({ children }) => {
     setCartItems(helperFunctionForAddingCartItem(cartItems, product));
   };
 
-  const value = { showCartDropdown, setShowCartDropdown };
+  const value = {
+    showCartDropdown,
+    setShowCartDropdown,
+    cartItems,
+    setCartItems,
+    addItemToCart,
+  };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
