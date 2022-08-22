@@ -48,9 +48,11 @@ Cart Item
 export const CartProvider = ({ children }) => {
   const [showCartDropdown, setShowCartDropdown] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [totalItemsCount, setTotalItemsCount] = useState(0);
 
   const addItemToCart = (product) => {
     setCartItems(helperFunctionForAddingCartItem(cartItems, product));
+    setTotalItemsCount(totalItemsCount + 1);
   };
 
   const value = {
@@ -58,6 +60,7 @@ export const CartProvider = ({ children }) => {
     setShowCartDropdown,
     cartItems,
     addItemToCart,
+    totalItemsCount,
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
