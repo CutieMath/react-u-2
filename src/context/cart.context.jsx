@@ -28,7 +28,7 @@ const helperFunctionForReducingCartItem = (cartItems, productToReduce) => {
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
       cartItem.id === productToReduce.id && cartItem.quantity > 1
-        ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        ? { ...cartItem, quantity: cartItem.quantity - 1 } // we use a new arra here so that the component will re-render
         : cartItem
     );
   }
@@ -59,6 +59,8 @@ export const CartContext = createContext({
   setShowCartDropdown: () => {},
   cartItems: [],
   addItemToCart: () => {},
+  removeItemFromCart: () => {},
+  reduceItemFromCart: () => {},
 });
 
 /*

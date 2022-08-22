@@ -3,39 +3,37 @@ import { CartContext } from "../../context/cart.context";
 import { BsFillCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import "./checkout.styles.scss";
+import CheckoutItem from "../../components/checkout-item/checkout-item.components";
 
 const CheckOut = () => {
-  const {
-    cartItems,
-    addItemToCart,
-    reduceItemFromCart,
-    totalPrice,
-    removeItemFromCart,
-  } = useContext(CartContext);
+  const { cartItems, totalPrice } = useContext(CartContext);
   return (
-    <div>
+    <div className="checkout-container">
+      <div className="checkout-header">
+        <div className="header-block">
+          <span>Product</span>
+        </div>
+        <div className="header-block">
+          <span>Description</span>
+        </div>
+        <div className="header-block">
+          <span>Quantity</span>
+        </div>
+        <div className="header-block">
+          <span>Price</span>
+        </div>
+        <div className="header-block">
+          <span>Remove</span>
+        </div>
+      </div>
       {cartItems.length ? (
         cartItems.map((cartItem, index) => (
-          <div key={index}>
-            <p>{cartItem.name}</p>
-            <p>{cartItem.price}</p>
-            <div>
-              <BsFillCaretLeftFill
-                onClick={() => reduceItemFromCart(cartItem)}
-              />
-              <p>{cartItem.quantity}</p>
-              <BsFillCaretRightFill onClick={() => addItemToCart(cartItem)} />
-            </div>
-            <RiDeleteBin5Line
-              size={20}
-              onClick={() => removeItemFromCart(cartItem)}
-            />
-          </div>
+          <CheckoutItem cartItem={cartItem} key={index} />
         ))
       ) : (
         <h4>Empty Cart</h4>
       )}
-      <div>Total price: {totalPrice}</div>
+      <h3>Total price: {totalPrice}</h3>
     </div>
   );
 };
