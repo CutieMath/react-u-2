@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
 import { BsFillCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import "./checkout.styles.scss";
 
 const CheckOut = () => {
   const {
