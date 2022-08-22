@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
+import { BsFillCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs";
 
 const CheckOut = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, addItemToCart, removeItemFromCart } =
+    useContext(CartContext);
   return (
     <div>
       {cartItems.length ? (
@@ -10,7 +12,13 @@ const CheckOut = () => {
           <div key={index}>
             <p>{cartItem.name}</p>
             <p>{cartItem.price}</p>
-            <p>{cartItem.quantity}</p>
+            <div>
+              <BsFillCaretLeftFill
+                onClick={() => removeItemFromCart(cartItem)}
+              />
+              <p>{cartItem.quantity}</p>
+              <BsFillCaretRightFill onClick={() => addItemToCart(cartItem)} />
+            </div>
           </div>
         ))
       ) : (
