@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 const helperFunctionForAddingCartItem = (cartItems, productToAdd) => {
   // Check if the product is already in the cart
@@ -50,9 +50,15 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalItemsCount, setTotalItemsCount] = useState(0);
 
+  useEffect(() => {
+    const newCartCount = cartItems.reduce((accumulator, cartItem) => {
+      return accumulator + cartItem.quantity;
+    }, 0);
+    setTotalItemsCount(newCartCount);
+  }, [cartItems]);
+
   const addItemToCart = (product) => {
     setCartItems(helperFunctionForAddingCartItem(cartItems, product));
-    setTotalItemsCount(totalItemsCount + 1);
   };
 
   const value = {
