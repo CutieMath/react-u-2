@@ -23,9 +23,15 @@ const CheckoutItem = ({ cartItem }) => {
       </div>
       <span className="name">{name}</span>
       <span className="quantity">
-        <BsFillCaretLeftFill onClick={reduceQuantityhandler} />
+        <BsFillCaretLeftFill
+          onClick={reduceQuantityhandler}
+          style={{ cursor: "pointer" }}
+        />
         {quantity}
-        <BsFillCaretRightFill onClick={addQuantityhandler} />
+        <BsFillCaretRightFill
+          onClick={addQuantityhandler}
+          style={{ cursor: "pointer" }}
+        />
       </span>
       <span className="price">{price * quantity}</span>
       <RiDeleteBin5Line size={20} onClick={removeItemhandler} />

@@ -33,7 +33,7 @@ const CheckOut = () => {
       ) : (
         <h4>Empty Cart</h4>
       )}
-      <h3 className="total">Total price: {totalPrice}</h3>
+      <h3 className="total">Total price: ${totalPrice}</h3>
     </div>
   );
 };

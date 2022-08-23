@@ -61,6 +61,8 @@ export const CartContext = createContext({
   addItemToCart: () => {},
   removeItemFromCart: () => {},
   reduceItemFromCart: () => {},
+  totalPrice: 0,
+  totalItemsCount: 0,
 });
 
 /*
@@ -88,6 +90,7 @@ export const CartProvider = ({ children }) => {
   const [totalItemsCount, setTotalItemsCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  // One function ONLY in one useEffect
   useEffect(() => {
     const newCartCount = cartItems.reduce((accumulator, cartItem) => {
       return accumulator + cartItem.quantity;
