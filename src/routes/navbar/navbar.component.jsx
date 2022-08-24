@@ -1,44 +1,47 @@
 import React, { useContext } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { BiPlanet } from "react-icons/bi";
-import "./navbar.styles.scss";
 import { UserContext } from "../../context/user.context";
 import { signOutAuthUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.components";
 import { CartContext } from "../../context/cart.context";
+import {
+  NavbarContainer,
+  NavLinks,
+  NavLink,
+  LogoContainer,
+} from "./navbar.styles";
 
 const Navbar = () => {
   const { currentUser } = useContext(UserContext);
   const { showCartDropdown, setShowCartDropdown } = useContext(CartContext);
   return (
     <>
-      <div className="navbar">
-        <Link className="logo-container" to="/">
+      <NavbarContainer>
+        <LogoContainer to="/">
           <BiPlanet size={70} />
-        </Link>
-        <div className="links-container">
-          <Link className="nav-link" to="/shop">
-            <h3 className="nav-link-text">Shop</h3>
-          </Link>
+        </LogoContainer>
+        <NavLinks>
+          <NavLink to="/shop">
+            <h3>Shop</h3>
+          </NavLink>
           {currentUser ? (
-            <Link className="nav-link" to="/authentication">
-              <h3 className="nav-link-text" onClick={signOutAuthUser}>
-                Sign Out
-              </h3>
-            </Link>
+            <NavLink to="/authentication">
+              <h3 onClick={signOutAuthUser}>Sign Out</h3>
+            </NavLink>
           ) : (
-            <Link className="nav-link" to="/authentication">
-              <h3 className="nav-link-text">Sign In</h3>
-            </Link>
+            <NavLink to="/authentication">
+              <h3>Sign In</h3>
+            </NavLink>
           )}
           <CartIcon
             setShowCartDropdown={setShowCartDropdown}
             showCartDropdown={showCartDropdown}
           />
-        </div>
+        </NavLinks>
         {showCartDropdown && <CartDropdown />}
-      </div>
+      </NavbarContainer>
       <Outlet />
     </>
   );
