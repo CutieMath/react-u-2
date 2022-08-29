@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import { createAction } from "../utils/reducer/reducer.utils";
 
 const helperFunctionForAddingCartItem = (cartItems, productToAdd) => {
   // Check if the product is already in the cart
@@ -103,14 +104,13 @@ export const CartProvider = ({ children }) => {
       return accumulator + cartItem.price * cartItem.quantity;
     }, 0);
 
-    dispatch({
-      type: CART_ACTIONS.SET_CART_ITEMS,
-      payload: {
+    dispatch(
+      createAction(CART_ACTIONS.SET_CART_ITEMS, {
         cartItems: newCartItems,
         totalPrice: newTotalPrice,
         totalItemsCount: newCartCount,
-      },
-    });
+      })
+    );
   };
 
   const addItemToCart = (product) => {
@@ -129,7 +129,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const setShowCartDropdown = (bool) => {
-    dispatch({ type: CART_ACTIONS.SET_IS_CART_OPEN, payload: bool });
+    dispatch(createAction(CART_ACTIONS.SET_IS_CART_OPEN, bool));
   };
 
   const value = {
