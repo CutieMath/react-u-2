@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import CategoryPreview from "../../components/category-preview/category-preview.components";
-import { CategoriesContext } from "../../context/categories.context";
+import { selectCategoriesMap } from "../../store/category/category.selector";
 
 const CategoriesPreview = () => {
-  const { categoriesMap } = useContext(CategoriesContext);
+  const categoriesMap = useContext(selectCategoriesMap);
+
   return (
     <>
       {Object.keys(categoriesMap).map((title, index) => {
