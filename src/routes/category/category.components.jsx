@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectCategoriesMap } from "../../store/category/category.selector";
 import { useParams } from "react-router-dom";
