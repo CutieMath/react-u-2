@@ -1,3 +1,4 @@
 export const CART_ACTION_TYPES = {
-  TOGGLE_CART_HIDDEN: "cart/toggle_cart_hidden",
+  SET_CART_ITEMS: "cart/set_cart_items",
+  SET_IS_CART_OPEN: "cart/set_is_cart_open",
 };
