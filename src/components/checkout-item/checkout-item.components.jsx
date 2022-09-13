@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { selectCartItems } from "../../store/cart/cart.selector";
@@ -8,7 +8,6 @@ import {
   removeItemFromCart,
 } from "../../store/cart/cart.action";
 
-import { CartContext } from "../../context/cart.context";
 import { BsFillCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import "./checkout-item.styles.scss";
