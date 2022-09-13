@@ -4,9 +4,9 @@ import {
   selectCartCount,
   selectIsCartOpen,
 } from "../../store/cart/cart.selector";
-import "./cart-icon.styles.scss";
-import { BiShoppingBag } from "react-icons/bi";
 import { setShowCartDropdown } from "../../store/cart/cart.action";
+import { BiShoppingBag } from "react-icons/bi";
+import "./cart-icon.styles.scss";
 
 const CartIcon = () => {
   const dispatch = useDispatch();

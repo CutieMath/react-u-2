@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BiPlanet } from "react-icons/bi";
-// import { UserContext } from "../../context/user.context";
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
 import { signOutAuthUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.components";
-import { CartContext } from "../../context/cart.context";
+// import { CartContext } from "../../context/cart.context";
+// import { UserContext } from "../../context/user.context";
+
 import {
   NavbarContainer,
   NavLinks,
@@ -42,10 +43,7 @@ const Navbar = () => {
               <h3>Sign In</h3>
             </NavLink>
           )}
-          <CartIcon
-            setShowCartDropdown={setShowCartDropdown}
-            showCartDropdown={showCartDropdown}
-          />
+          <CartIcon />
         </NavLinks>
         {showCartDropdown && <CartDropdown />}
       </NavbarContainer>
