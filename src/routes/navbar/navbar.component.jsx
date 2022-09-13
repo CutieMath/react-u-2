@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BiPlanet } from "react-icons/bi";
@@ -6,8 +6,6 @@ import { selectIsCartOpen } from "../../store/cart/cart.selector";
 import { signOutAuthUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.components";
-// import { CartContext } from "../../context/cart.context";
-// import { UserContext } from "../../context/user.context";
 
 import {
   NavbarContainer,
@@ -21,8 +19,6 @@ const Navbar = () => {
   // get things from redux
   const currentUser = useSelector(selectCurrentUser);
   const showCartDropdown = useSelector(selectIsCartOpen);
-  // const { currentUser } = useContext(UserContext);
-  // const { showCartDropdown, setShowCartDropdown } = useContext(CartContext);
 
   return (
     <>
