@@ -25,8 +25,18 @@ export const CategoriesProvider = ({ children }) => {
   const { loading, error, data } = useQuery(COLLECTIONS_QUERY);
   const [categoriesMap, setCategoriesMap] = useState({});
 
-  console.log(loading);
-  console.log(data);
+  useEffect(() => {
+    if (data) {
+      const { collections } = data;
+      const collectionsMap = collections.reduce((accumulator, collection) => {
+        const { title, items } = collection;
+        accumulator[title.toLowerCase()] = items;
+        console.log(accumulator);
+        return accumulator;
+      }, {});
+      setCategoriesMap(collectionsMap);
+    }
+  }, [data]);
 
   // Replace the following code with Apollo client
   // We are now having a better way to fetch data from the server
