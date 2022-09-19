@@ -23,8 +23,6 @@ const GET_CATEGORY = gql`
 `;
 
 const Category = () => {
-  // const { categoriesMap, loading } = useContext(CategoriesContext);
-
   const { category } = useParams();
   const { loading, error, data } = useQuery(GET_CATEGORY, {
     variables: { title: category },
@@ -37,13 +35,7 @@ const Category = () => {
       setProducts(items);
     }
   }, [category, data]);
-
   const [products, setProducts] = useState([]);
-
-  // useEffect(() => {
-  //   setProducts(categoriesMap[category]);
-  // }, [category, categoriesMap]);
-
   return (
     <>
       <h2 className="category-title-category-page">{category}</h2>
